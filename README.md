@@ -1,6 +1,4 @@
 # APK Verifier
-[![N|Solid](http://blog.ahmetbutun.net/wp-content/uploads/2016/10/netas_logo.png)](http://www.netas.com.tr)
-
 Android Package Verifier for Java Applications
 
 # Example Usage 1
