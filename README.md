@@ -58,4 +58,39 @@ Result result = apkVerifier.verify(dataSource, 20);
 if (result.isVerified()) {
   ....
 }
+
+fc.close();
+fin.close();
+```
+# Check APK Signature SHA1
+```java
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
+import org.apache.commons.codec.digest.DigestUtils;
+...
+...
+...
+...
+
+Result result = apkVerifier.verify(YOUR_DATA_SOURCE, YOUR_MIN_SDK_VERSION);
+
+boolean valid = false;
+
+if (result.isVerified()) {
+	String signatureSha1 = "";
+
+	for (X509Certificate certificate : result.getSignerCertificates()) {
+		signatureSha1 = DigestUtils.sha1Hex(certificate.getEncoded());
+
+		if (YOUR_APK_SIGNATURE_SHA1.equalsIgnoreCase(signatureSha1)) {
+			valid = true;
+
+			break;
+		}
+}
+ 
+if(valid){
+  ....
+}
 ```
